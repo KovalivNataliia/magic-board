@@ -5,12 +5,23 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const path = require('path');
 const config = require('./config/db');
-const boardRoutes = require('./routes/board')
+const boardRoutes = require('./routes/account');
+const session = require('express-session');
 
 
 const app = express();
 
 const PORT = 3000;
+
+app.use(session({
+  resave: false,
+  saveUninitialized: true,
+  secret: config.secret
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -25,17 +36,17 @@ app.use('/account', boardRoutes);
 
 mongoose.connect(config.db, {
   useUnifiedTopology: true,
-  useNewUrlParser: true 
+  useNewUrlParser: true
 });
 
 mongoose.connection.on('connected', () => {
-  console.log('Connection to database was successful')
-})
+  console.log('Connection to database was successful');
+});
 
 mongoose.connection.on('error', (err) => {
-  console.log('Connection to db was not successful' + err)
-})
+  console.log('Connection to database was not successful' + err);
+});
 
 app.listen(PORT, () => {
-  console.log('Server has been started')
-})
+  console.log('Server has been started');
+});

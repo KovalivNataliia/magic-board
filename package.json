@@ -15,7 +15,8 @@
     "passport-jwt": "*",
     "body-parser": "*",
     "cors": "*",
-    "jsonwebtoken": "*"
+    "jsonwebtoken": "*",
+    "express-session": "^1.15.3"
   },
   "author": "",
   "license": "ISC"
