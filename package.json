@@ -8,15 +8,15 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "*",
-    "mongoose": "*",
-    "bcryptjs": "*",
-    "passport": "*",
-    "passport-jwt": "*",
-    "body-parser": "*",
-    "cors": "*",
-    "jsonwebtoken": "*",
-    "express-session": "^1.15.3"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-session": "^1.15.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.6",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0"
   },
   "author": "",
   "license": "ISC"

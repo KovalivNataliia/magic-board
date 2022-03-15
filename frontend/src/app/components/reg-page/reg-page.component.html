@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
+    <mat-step [stepControl]="firstFormGroup" label="Enter your email">
+      <form [formGroup]="firstFormGroup">
+        <div class="alert" *ngIf="firstFormGroup.get('firstCtrl')?.invalid && firstFormGroup.get('firstCtrl')?.touched">
+          Check entered email!
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-stroked-button color="warn" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Enter your password">
+      <form [formGroup]="secondFormGroup">
+        <div class="alert" *ngIf="secondFormGroup.get('secondCtrl')?.invalid && secondFormGroup.get('secondCtrl')?.touched">
+          Minimum length 8 characters!
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Password" required>
+        </mat-form-field>
+        <div>
+          <button mat-stroked-button color="basic" matStepperPrevious>Back</button>
+          <button mat-stroked-button color="warn" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup" label="Repeat your password">
+      <form [formGroup]="thirdFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="thirdCtrl" placeholder="Password" required>
+        </mat-form-field>
+        <div>
+          <button mat-stroked-button color="basic" matStepperPrevious>Back</button>
+          <button mat-stroked-button color="primary" (click)="registerUser()">Register</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+</div>
