@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormControl, FormGroup, } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
@@ -15,19 +15,20 @@ import { Router } from '@angular/router';
 export class RegPageComponent implements OnInit {
 
   firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, Validators.email]],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', [Validators.required, Validators.minLength(8)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
   });
   thirdFormGroup = this._formBuilder.group({
-    thirdCtrl: ['', Validators.required],
+    repeatPassword: ['', Validators.required],
   });
 
   stepperOrientation: Observable<StepperOrientation>;
 
   success: boolean = true;
   message!: string;
+  hide: boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -44,14 +45,14 @@ export class RegPageComponent implements OnInit {
   }
 
   registerUser() {
-    if (!this.firstFormGroup.get('firstCtrl')?.invalid) {
-      if (!this.secondFormGroup.get('secondCtrl')?.invalid &&
-        this.secondFormGroup.get('secondCtrl')?.value === this.thirdFormGroup.get('thirdCtrl')?.value) {
+    if (!this.firstFormGroup.get('email')?.invalid) {
+      if (!this.secondFormGroup.get('password')?.invalid &&
+        this.secondFormGroup.get('password')?.value === this.thirdFormGroup.get('repeatPassword')?.value) {
         const userData = {
-          email: this.firstFormGroup.get('firstCtrl')?.value,
-          password: this.secondFormGroup.get('secondCtrl')?.value
+          email: this.firstFormGroup.get('email')?.value,
+          password: this.secondFormGroup.get('password')?.value
         }
-        this.regService.register(userData).subscribe(data => {
+        this.regService.regUser(userData).subscribe(data => {
           if (!data.success) {
             this.success = false;
             this.message = data.msg;

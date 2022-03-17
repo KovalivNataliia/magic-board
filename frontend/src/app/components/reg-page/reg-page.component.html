@@ -2,30 +2,35 @@
   <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
     <mat-step [stepControl]="firstFormGroup" label="Enter your email">
       <form [formGroup]="firstFormGroup">
-        <div class="alert" *ngIf="firstFormGroup.get('firstCtrl')?.invalid && firstFormGroup.get('firstCtrl')?.touched">
-          Check entered email!
-        </div>
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="firstCtrl" required>
+          <input matInput placeholder="Email" formControlName="email" required>
+          <mat-error>
+            Check entered email
+          </mat-error>
         </mat-form-field>
         <div>
-          <button mat-stroked-button color="warn" matStepperNext>Next</button>
+          <button mat-stroked-button color="basic" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Enter your password">
       <form [formGroup]="secondFormGroup">
-        <div class="alert" *ngIf="secondFormGroup.get('secondCtrl')?.invalid && secondFormGroup.get('secondCtrl')?.touched">
-          Minimum length 8 characters!
-        </div>
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="secondCtrl" placeholder="Password" required>
+          <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'"
+            required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error>
+            Minimum length 8 characters
+          </mat-error>
         </mat-form-field>
         <div>
-          <button mat-stroked-button color="basic" matStepperPrevious>Back</button>
-          <button mat-stroked-button color="warn" matStepperNext>Next</button>
+          <button mat-stroked-button color="warn" matStepperPrevious>Back</button>
+          <button mat-stroked-button color="basic" matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
@@ -33,10 +38,15 @@
       <form [formGroup]="thirdFormGroup">
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="thirdCtrl" placeholder="Password" required>
+          <input matInput formControlName="repeatPassword" placeholder="Password" [type]="hide ? 'password' : 'text'"
+            required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
         <div>
-          <button mat-stroked-button color="basic" matStepperPrevious>Back</button>
+          <button mat-stroked-button color="warn" matStepperPrevious>Back</button>
           <button mat-stroked-button color="primary" (click)="registerUser()">Register</button>
         </div>
       </form>

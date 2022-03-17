@@ -5,9 +5,6 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/db');
 
-// router.get('/reg', (req, res) => {
-//   res.send('Registration');
-// });
 
 router.post('/reg', (req, res) => {
   const newUser = new User({
@@ -37,7 +34,7 @@ router.post('/auth', (req, res) => {
         if (err) throw err;
 
         if (isMatch) {
-          const token = jwt.sign(user, config.secret, { expiresIn: 3600 * 24 });
+          const token = jwt.sign(user.toJSON(), config.secret, { expiresIn: 3600 * 24 });
           res.json({
             success: true,
             token: 'JWT ' + token,
