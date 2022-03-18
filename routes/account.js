@@ -14,9 +14,9 @@ router.post('/reg', (req, res) => {
 
   User.addUser(newUser, (err, user) => {
     if (err) {
-      res.json({ success: false, msg: 'User has not been added' });
+      res.json({ success: false, msg: 'You have successfully been registered' });
     } else {
-      res.json({ success: true, msg: 'User has been added' });
+      res.json({ success: true, msg: 'Something went wrong, try again later..' });
     }
   });
 });
@@ -28,7 +28,7 @@ router.post('/auth', (req, res) => {
   User.getUserByEmail(email, (err, user) => {
     if (err) throw err;
     if (!user) {
-      return res.json({ success: false, msg: 'User not found' });
+      return res.json({ success: false, msg: 'User not found, please check your email' });
     } else {
       User.comparePassword(password, user.password, (err, isMatch) => {
         if (err) throw err;
@@ -41,7 +41,8 @@ router.post('/auth', (req, res) => {
             user: {
               id: user._id,
               email: user.email
-            }
+            },
+            msg: 'You have successfully been logged in'
           });
         } else {
           return res.json({ success: false, msg: 'Wrong password' });

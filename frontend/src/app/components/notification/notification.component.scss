@@ -1,0 +1,19 @@
+.message-block {
+  position: absolute;
+  top: 100px;
+  left: calc(50% - 300px / 2);
+  width: 300px;
+  font-size: 14px;
+  text-align: center;
+  padding: 13px;
+  background: #FFF;
+  border: 2px solid;
+  border-radius: 4px;
+  transform: translateY(-700%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 3;
+}
+
+.message-block.visible {
+  transform: translateY(0%);
+}

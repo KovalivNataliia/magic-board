@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -11,8 +12,6 @@ import { Router } from '@angular/router';
 export class AuthPageComponent implements OnInit {
 
   hide: boolean = true;
-  success: boolean = true;
-  message!: string;
 
   form = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -22,7 +21,8 @@ export class AuthPageComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder, 
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService
     ) { }
 
   ngOnInit(): void {
@@ -35,10 +35,9 @@ export class AuthPageComponent implements OnInit {
     }
     this.authService.authUser(userData).subscribe(data => {
       if (!data.success) {
-        this.success = false;
-        this.message = data.msg;
+        this.notification.showMessage(data.msg, data.success)
       } else {
-        this.message = data.msg;
+        this.notification.showMessage(data.msg, data.success)
         this.router.navigate(['/board']);
         this.authService.storeUser(data.token, data.user)
       }

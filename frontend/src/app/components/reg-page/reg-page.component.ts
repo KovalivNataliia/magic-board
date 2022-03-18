@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-reg-page',
@@ -26,15 +27,14 @@ export class RegPageComponent implements OnInit {
 
   stepperOrientation: Observable<StepperOrientation>;
 
-  success: boolean = true;
-  message!: string;
   hide: boolean = true;
 
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
     private regService: RegistrationService,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
@@ -54,14 +54,17 @@ export class RegPageComponent implements OnInit {
         }
         this.regService.regUser(userData).subscribe(data => {
           if (!data.success) {
-            this.success = false;
-            this.message = data.msg;
+            this.notification.showMessage(data.msg, data.success)
           } else {
-            this.message = data.msg;
+            this.notification.showMessage(data.msg, data.success)
             this.router.navigate(['/auth']);
           }
         });
+      } else {
+        this.notification.showMessage('Passwords don\'t match', false);
       }
+    } else {
+      this.notification.showMessage('Check your email', false);
     }
   }
 
