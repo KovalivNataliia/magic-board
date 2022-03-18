@@ -1,14 +1,21 @@
-<mat-toolbar  class="d-flex justify-content-center mb-4 shadow">
+<mat-toolbar class="d-flex justify-content-center mb-4 shadow">
   <div>
     <span class="mat-h1">Magic Board</span>
   </div>
-  <div>
-        <button class="ml-5 bg-info text-white" mat-raised-button routerLink="/auth">
-          Log In
-        </button>
-        <button class="ml-2 bg-info text-white" mat-raised-button routerLink="/reg">
-          Register
-        </button>
+  <div *ngIf="!isLoggedIn">
+    <button class="ml-5 text-white" mat-raised-button color="accent" routerLink="/auth">
+      Log In
+    </button>
+    <button class="ml-2 text-white" mat-raised-button color="warn" routerLink="/reg">
+      Register
+    </button>
+  </div>
+  <div *ngIf="isLoggedIn">
+    <button class="ml-5 bg-info text-white" mat-raised-button>
+      New List
+    </button>
+    <button class="ml-2 text-white" mat-raised-button color="primary" routerLink="/auth" (click)="logOut()">
+      Log Out
+    </button>
   </div>
 </mat-toolbar>
-

@@ -12,6 +12,7 @@ import { BoardPageModule } from './modules/board-page.module';
 import { RegistrationService } from './services/registration.service';
 import { NotificationService } from './services/notification.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { NotificationComponent } from './components/notification/notification.component';
@@ -34,7 +35,8 @@ import { NotificationComponent } from './components/notification/notification.co
   providers: [
     RegistrationService,
     AuthService,
-    NotificationService
+    NotificationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

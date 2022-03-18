@@ -1,15 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-
-  token: any;
-  user: any;
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +21,15 @@ export class AuthService {
   storeUser(token: any, user: any) {
     sessionStorage.setItem('token', token);
     sessionStorage.setItem('user', JSON.stringify(user));
+  }
 
-    this.token = token;
-    this.user = user;
+  isLoggedIn() {
+    const jwtHelper = new JwtHelperService();
+    const token: string | any = sessionStorage.getItem('token');
+    return !jwtHelper.isTokenExpired(token);
+  }
+
+  logOut() {
+    sessionStorage.clear();
   }
 }
