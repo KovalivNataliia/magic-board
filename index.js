@@ -5,13 +5,15 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const path = require('path');
 const config = require('./config/db');
-const boardRoutes = require('./routes/account');
+const accountRoutes = require('./routes/account');
+const boardRoutes = require('./routes/board');
 const session = require('express-session');
 
 
 const app = express();
 
 const PORT = 3000;
+// const PORT = process.env.PORT || 8080;
 
 app.use(session({
   resave: false,
@@ -32,7 +34,12 @@ app.get('/', (req, res) => {
   res.send('Main page');
 })
 
-app.use('/account', boardRoutes);
+app.use('/account', accountRoutes);
+app.use('/board', boardRoutes);
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public/index.html'))
+// })
 
 mongoose.connect(config.db, {
   useUnifiedTopology: true,

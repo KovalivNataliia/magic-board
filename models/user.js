@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
-const config = require('../config/db');
 
 const userSchema = new Schema({
   email: {
@@ -15,14 +14,9 @@ const userSchema = new Schema({
 
 const User = module.exports = model('User', userSchema);
 
-module.exports.getUserByEmail = function (email, callback) {
-  const query = { email: email };
-  User.findOne(query, callback);
-};
+module.exports.getUserByEmail = (email, callback) => User.findOne({ email: email }, callback);
 
-module.exports.getUserById = function (id, callback) {
-  User.findById(id, callback);
-};
+module.exports.getUserById = (id, callback) => User.findById(id, callback);
 
 module.exports.addUser = function (newUser, callback) {
   bcrypt.genSalt(10, (err, salt) => {

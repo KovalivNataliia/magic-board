@@ -11,9 +11,11 @@
     </button>
   </div>
   <div *ngIf="isLoggedIn">
-    <button class="ml-5 bg-info text-white" mat-raised-button>
-      New List
-    </button>
+    <app-add-dialog (emitAddCard)="addList($event)" title="Add new list">
+      <button class="ml-5 bg-info text-white" mat-raised-button>
+        New List
+      </button>
+    </app-add-dialog>
     <button class="ml-2 text-white" mat-raised-button color="primary" routerLink="/auth" (click)="logOut()">
       Log Out
     </button>

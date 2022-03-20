@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
-const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/db');
 
@@ -14,9 +13,9 @@ router.post('/reg', (req, res) => {
 
   User.addUser(newUser, (err, user) => {
     if (err) {
-      res.json({ success: false, msg: 'You have successfully been registered' });
+      res.json({ success: false, msg: 'Something went wrong, try again later..' });
     } else {
-      res.json({ success: true, msg: 'Something went wrong, try again later..' });
+      res.json({ success: true, msg: 'You have successfully been registered' });
     }
   });
 });
@@ -50,10 +49,6 @@ router.post('/auth', (req, res) => {
       });
     }
   });
-});
-
-router.get('/board', passport.authenticate('jwt', { session: false }), (req, res) => {
-  res.send('Magic-board');
 });
 
 module.exports = router;
