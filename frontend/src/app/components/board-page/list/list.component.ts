@@ -35,4 +35,19 @@ export class ListComponent implements OnInit {
     }
   }
 
+  deleteList(id: string) {
+    this.boardService.deleteList(id).subscribe(data => {
+      if (!data.success) {
+        this.notification.showMessage(data.msg, data.success);
+      } else {
+        this.boardService.lists.map((list: any, idx: number, arr: any) => {
+          if (list._id === id) {
+            arr.splice(idx, 1);
+          }
+        });
+        this.boardService.lists$.next(this.boardService.lists)
+      };
+    })
+  }
+
 }

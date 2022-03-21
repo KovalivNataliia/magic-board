@@ -29,9 +29,11 @@ module.exports.getUsersLists = (userId, callback) => List.find({ userId: userId 
 
 module.exports.getListById = (id, callback) => List.findById(id, callback);
 
+module.exports.addList = (newList, callback) => newList.save(callback);
+
 module.exports.changeList = (list, text, callback) => {
   list.title = text;
   list.save(callback);
 }
 
-module.exports.addList = (newList, callback) => newList.save(callback);
+module.exports.deleteList = (id, callback) => List.findByIdAndRemove(id, callback);

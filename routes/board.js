@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router({mergeParams: true});
+const router = express.Router({ mergeParams: true });
 const List = require('../models/list');
 const passport = require('passport');
 
@@ -38,9 +38,20 @@ router.patch('/list/:id', passport.authenticate('jwt', { session: false }), (req
       if (err) {
         res.json({ success: false, msg: 'Something went wrong, try again later..' });
       } else {
-        res.json({ success: true, msg: 'You have successfully change title' });
+        res.json({ success: true, msg: 'You have successfully changed title' });
       }
     })
+  })
+});
+
+router.delete('/list/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const id = req.params.id;
+  List.deleteList(id, (err, list) => {
+    if (err) {
+      res.json({ success: false, msg: 'Something went wrong, try again later..' });
+    } else {
+      res.json({ success: true, msg: 'You have successfully deleted list' });
+    }
   })
 });
 

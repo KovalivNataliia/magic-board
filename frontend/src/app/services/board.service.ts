@@ -35,4 +35,10 @@ export class BoardService {
     headers.append('Content-Type', 'application/json');
     return this.http.patch(this.url + list.id, list, { headers: headers }).pipe(map((response: any) => response));
   }
+
+  deleteList(id: string) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(this.url + id, { headers: headers }).pipe(map((response: any) => response));
+  }
 }

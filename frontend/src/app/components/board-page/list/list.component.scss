@@ -1,5 +1,14 @@
-.list-header {
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 5px 30px 20px;
   border: 1px solid rgb(188, 230, 233);
+  word-break: break-word;
+}
+
+.btn-container {
+  min-width: 80px;
 }
 
 .btn-add {
