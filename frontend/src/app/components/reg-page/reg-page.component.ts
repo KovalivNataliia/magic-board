@@ -4,9 +4,10 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegistrationService } from 'src/app/services/registration.service';
 import { Router } from '@angular/router';
+import { RegistrationService } from 'src/app/services/registration.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-reg-page',
@@ -48,7 +49,7 @@ export class RegPageComponent implements OnInit {
     if (!this.firstFormGroup.get('email')?.invalid) {
       if (!this.secondFormGroup.get('password')?.invalid &&
         this.secondFormGroup.get('password')?.value === this.thirdFormGroup.get('repeatPassword')?.value) {
-        const userData = {
+        const userData: User = {
           email: this.firstFormGroup.get('email')?.value,
           password: this.secondFormGroup.get('password')?.value
         }

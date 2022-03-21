@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { List } from 'src/app/models/list.model';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class BoardService {
 
   url: string = 'http://localhost:3000/board/list/';
-  lists!: any;
+  lists!: List[];
   lists$: any;
 
   constructor(private http: HttpClient) { }
@@ -24,16 +25,16 @@ export class BoardService {
     return this.http.get(this.url, { params: params }).pipe(map((response: any) => response));
   }
 
-  addList(list: any) {
+  addList(list: List) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.post(this.url, list, { headers: headers }).pipe(map((response: any) => response));
   }
 
-  changeList(list: any) {
+  changeList(listData: any) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.patch(this.url + list.id, list, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.patch(this.url + listData.id, listData, { headers: headers }).pipe(map((response: any) => response));
   }
 
   deleteList(id: string) {

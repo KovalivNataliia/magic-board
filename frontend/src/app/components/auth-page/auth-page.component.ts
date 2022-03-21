@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-auth-page',
@@ -29,7 +30,7 @@ export class AuthPageComponent implements OnInit {
   }
 
   onSubmit() {
-    const userData = {
+    const userData: User = {
       email: this.form.get('email')?.value,
       password: this.form.get('password')?.value
     }

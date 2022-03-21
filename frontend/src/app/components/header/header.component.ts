@@ -2,6 +2,7 @@ import { Component, DoCheck } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { BoardService } from './../../services/board.service';
+import { List } from 'src/app/models/list.model';
 
 @Component({
   selector: 'app-header',
@@ -30,7 +31,7 @@ export class HeaderComponent implements DoCheck {
   addList(text: string) {
     if (text) {
       this.userId = JSON.parse(sessionStorage.getItem('user')!).id;
-      const list = {
+      const list: List = {
         title: text,
         userId: this.userId
       }

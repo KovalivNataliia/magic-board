@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BoardService } from 'src/app/services/board.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { List } from 'src/app/models/list.model';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class ListComponent implements OnInit {
 
-  @Input() list: any;
+  @Input() list!: List;
 
   constructor(private boardService: BoardService, private notification: NotificationService) { }
 
@@ -18,13 +19,13 @@ export class ListComponent implements OnInit {
 
   changeListTitle(text: string, id: string) {
     if (text) {
-      const list = {id, text};
+      const listData = { id, text };
 
-      this.boardService.changeList(list).subscribe(data => {
+      this.boardService.changeList(listData).subscribe(data => {
         if (!data.success) {
           this.notification.showMessage(data.msg, data.success);
         } else {
-          this.boardService.lists.map((list: any) => {
+          this.boardService.lists.map(list => {
             if (list._id === id) {
               list.title = text;
             }
@@ -40,7 +41,7 @@ export class ListComponent implements OnInit {
       if (!data.success) {
         this.notification.showMessage(data.msg, data.success);
       } else {
-        this.boardService.lists.map((list: any, idx: number, arr: any) => {
+        this.boardService.lists.map((list, idx, arr) => {
           if (list._id === id) {
             arr.splice(idx, 1);
           }
