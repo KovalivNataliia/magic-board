@@ -8,7 +8,7 @@ import { RegPageModule } from './modules/reg-page.module';
 import { HeaderModule } from './modules/header.module';
 import { AuthPageModule } from './modules/auth-page.module';
 import { BoardPageModule } from './modules/board-page.module';
-import { AddDialogModule } from './modules/add-dialog.module';
+import { DialogModule } from './modules/dialog.module';
 
 import { RegistrationService } from './services/registration.service';
 import { NotificationService } from './services/notification.service';
@@ -33,7 +33,7 @@ import { NotificationComponent } from './components/notification/notification.co
     HeaderModule,
     AuthPageModule,
     BoardPageModule,
-    AddDialogModule
+    DialogModule
   ],
   providers: [
     RegistrationService,

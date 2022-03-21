@@ -5,14 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AddDialogComponent } from '../components/add-dialog/add-dialog.component';
-import { AddFormComponent } from '../components/add-dialog/add-form/add-form.component';
+import { DialogComponent } from '../components/dialog/dialog.component';
+import { DialogFormComponent } from '../components/dialog/dialog-form/dialog-form.component';
 
 
 @NgModule({
   declarations: [
-    AddDialogComponent,
-    AddFormComponent
+    DialogComponent,
+    DialogFormComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +21,6 @@ import { AddFormComponent } from '../components/add-dialog/add-form/add-form.com
     MatInputModule,
     MatDialogModule
   ],
-  exports: [AddDialogComponent]
+  exports: [DialogComponent]
 })
-export class AddDialogModule { }
+export class DialogModule { }

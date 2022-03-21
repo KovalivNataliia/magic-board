@@ -25,9 +25,23 @@ router.post('/list', passport.authenticate('jwt', { session: false }), (req, res
     if (err) {
       res.json({ success: false, msg: 'Something went wrong, try again later..' });
     } else {
-      res.json({ success: true, msg: 'You have successfully added new list' });
+      res.json({ success: true, msg: 'You have successfully added new list', list });
     }
   });
+});
+
+router.patch('/list/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const id = req.body.id;
+  const text = req.body.text;
+  List.getListById(id, (err, list) => {
+    List.changeList(list, text, (err, list) => {
+      if (err) {
+        res.json({ success: false, msg: 'Something went wrong, try again later..' });
+      } else {
+        res.json({ success: true, msg: 'You have successfully change title' });
+      }
+    })
+  })
 });
 
 module.exports = router;

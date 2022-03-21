@@ -39,7 +39,7 @@ export class HeaderComponent implements DoCheck {
         if (!data.success) {
           this.notification.showMessage(data.msg, data.success);
         } else {
-          this.boardService.lists.push(list);
+          this.boardService.lists.push(data.list);
           this.boardService.lists$.next(this.boardService.lists)
         };
       })

@@ -6,18 +6,24 @@ const config = require('../config/db');
 
 
 router.post('/reg', (req, res) => {
-  const newUser = new User({
-    email: req.body.email,
-    password: req.body.password
-  });
-
-  User.addUser(newUser, (err, user) => {
-    if (err) {
-      res.json({ success: false, msg: 'Something went wrong, try again later..' });
+  User.getUserByEmail(req.body.email, (err, user) => {
+    if (user) {
+      res.json({ success: false, msg: 'You already have an account' });
     } else {
-      res.json({ success: true, msg: 'You have successfully been registered' });
+      const newUser = new User({
+        email: req.body.email,
+        password: req.body.password
+      });
+    
+      User.addUser(newUser, (err, user) => {
+        if (err) {
+          res.json({ success: false, msg: 'Something went wrong, try again later..' });
+        } else {
+          res.json({ success: true, msg: 'You have successfully been registered' });
+        }
+      });
     }
-  });
+  })
 });
 
 router.post('/auth', (req, res) => {

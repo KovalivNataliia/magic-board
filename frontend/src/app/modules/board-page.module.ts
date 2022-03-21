@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AddDialogModule } from './add-dialog.module';
+import { DialogModule } from './dialog.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -16,7 +16,7 @@ import { ListComponent } from './../components/board-page/list/list.component';
   ],
   imports: [
     CommonModule,
-    AddDialogModule,
+    DialogModule,
     MatIconModule,
     MatButtonModule
   ],

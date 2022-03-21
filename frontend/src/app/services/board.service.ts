@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 
 export class BoardService {
 
-  url: string = 'http://localhost:3000/board/list';
+  url: string = 'http://localhost:3000/board/list/';
   lists!: any;
   lists$: any;
 
@@ -28,5 +28,11 @@ export class BoardService {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.post(this.url, list, { headers: headers }).pipe(map((response: any) => response));
+  }
+
+  changeList(list: any) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.patch(this.url + list.id, list, { headers: headers }).pipe(map((response: any) => response));
   }
 }
