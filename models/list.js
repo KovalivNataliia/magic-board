@@ -1,15 +1,5 @@
 const { Schema, model } = require('mongoose');
-
-const cardSchema = new Schema({
-  text: {
-    type: String,
-    required: true
-  },
-  color: {
-    type: String,
-    required: true
-  }
-});
+const Card = require('../models/card');
 
 const listSchema = new Schema({
   title: {
@@ -20,7 +10,7 @@ const listSchema = new Schema({
     type: String,
     required: true
   },
-  cards: cardSchema
+  cards: [Card.schema]
 });
 
 const List = module.exports = model('List', listSchema);

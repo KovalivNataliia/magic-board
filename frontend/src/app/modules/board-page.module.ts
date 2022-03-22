@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { BoardPageComponent } from '../components/board-page/board-page.component';
 import { ListComponent } from './../components/board-page/list/list.component';
+import { CardComponent } from '../components/board-page/card/card.component';
 
 
 
@@ -13,6 +14,7 @@ import { ListComponent } from './../components/board-page/list/list.component';
   declarations: [
     BoardPageComponent,
     ListComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,

@@ -7,14 +7,15 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-reg-page',
   templateUrl: './reg-page.component.html',
   styleUrls: ['./reg-page.component.scss']
 })
-export class RegPageComponent implements OnInit {
+
+export class RegPageComponent {
 
   firstFormGroup = this._formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -40,9 +41,6 @@ export class RegPageComponent implements OnInit {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
-  }
-
-  ngOnInit(): void {
   }
 
   registerUser() {

@@ -11,7 +11,7 @@
     </button>
   </div>
   <div *ngIf="isLoggedIn">
-    <app-dialog (emitConfirm)="addList($event)" [title] ="'Add new list'">
+    <app-dialog (emitConfirm)="addList($event)" [title]="'Add new list'">
       <button class="ml-5 bg-info text-white" mat-raised-button>
         New List
       </button>

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { BoardService } from 'src/app/services/board.service';
 
@@ -17,7 +17,7 @@ export class BoardPageComponent implements OnInit {
     this.boardService.getListsData(this.userId).subscribe(data => {
       if (data.success) {
         this.boardService.lists = data.lists;
-        this.boardService.lists$ =  new BehaviorSubject<any[]>(this.boardService.lists)
+        this.boardService.lists$ = new BehaviorSubject<any[]>(this.boardService.lists)
       }
     });
   }

@@ -7,12 +7,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent } from '../components/dialog/dialog.component';
 import { DialogFormComponent } from '../components/dialog/dialog-form/dialog-form.component';
+import { ColorPanelComponent } from './../components/dialog/color-panel/color-panel.component';
 
 
 @NgModule({
   declarations: [
     DialogComponent,
-    DialogFormComponent
+    DialogFormComponent,
+    ColorPanelComponent
   ],
   imports: [
     CommonModule,

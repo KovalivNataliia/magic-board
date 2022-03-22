@@ -13,8 +13,8 @@ export class NotificationService {
 
   showMessage(text: string, status: boolean) {
     this.messageText = text;
-    if (status)  {
-      this.color ='rgb(5, 163, 55)';
+    if (status) {
+      this.color = 'rgb(5, 163, 55)';
     } else {
       this.color = 'red';
     }

@@ -12,6 +12,10 @@
     </button>
   </div>
 </div>
-<app-dialog [title]="'Add new card in ' + list.title + ' list'">
-  <button mat-raised-button class="w-100 mb-1 btn-add">+</button>
+<app-dialog [title]="'Add new card in ' + list.title + ' list'" [showColorPanel]="true"
+  (emitConfirm)="addCard($event, list._id)">
+  <button mat-raised-button class="add-btn w-100 mb-1">+</button>
 </app-dialog>
+<div cdkDrag *ngFor="let card of list.cards">
+  <app-card [card]="card"></app-card>
+</div>

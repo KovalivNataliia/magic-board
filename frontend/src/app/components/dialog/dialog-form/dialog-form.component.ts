@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -7,12 +7,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./dialog-form.component.scss']
 })
 
-export class DialogFormComponent implements OnInit {
+export class DialogFormComponent {
+
+  showColorPanel = false;
 
   constructor(public dialogRef: MatDialogRef<DialogFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.showColorPanel = data.showColorPanel;
+  }
 
-  ngOnInit(): void {
+  setColor(event: any) {
+    this.data.color = event.color;
   }
 
   cancel(): void {

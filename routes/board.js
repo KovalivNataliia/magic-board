@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
 const List = require('../models/list');
+const Card = require('../models/card');
 const passport = require('passport');
 
 
-router.get('/list', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/lists', passport.authenticate('jwt', { session: false }), (req, res) => {
   const userId = req.query.userId;
   List.getUsersLists(userId, (err, lists) => {
     if (err) {
@@ -15,7 +16,7 @@ router.get('/list', passport.authenticate('jwt', { session: false }), (req, res)
   })
 });
 
-router.post('/list', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/lists', passport.authenticate('jwt', { session: false }), (req, res) => {
   const newList = new List({
     title: req.body.title,
     userId: req.body.userId
@@ -30,8 +31,8 @@ router.post('/list', passport.authenticate('jwt', { session: false }), (req, res
   });
 });
 
-router.patch('/list/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const id = req.body.id;
+router.patch('/lists/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const id = req.params.id;
   const text = req.body.text;
   List.getListById(id, (err, list) => {
     List.changeList(list, text, (err, list) => {
@@ -44,7 +45,7 @@ router.patch('/list/:id', passport.authenticate('jwt', { session: false }), (req
   })
 });
 
-router.delete('/list/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.delete('/lists/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   const id = req.params.id;
   List.deleteList(id, (err, list) => {
     if (err) {
@@ -52,6 +53,25 @@ router.delete('/list/:id', passport.authenticate('jwt', { session: false }), (re
     } else {
       res.json({ success: true, msg: 'You have successfully deleted list' });
     }
+  })
+});
+
+router.post('/lists/:id/cards', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const newCard = new Card({
+    text: req.body.text,
+    color: req.body.color
+  });
+
+  const id = req.params.id;
+
+  List.getListById(id, (err, list) => {
+    Card.addCard(newCard, list, (err, result) => {
+      if (err) {
+        res.json({ success: false, msg: 'Something went wrong, try again later..' });
+      } else {
+        res.json({ success: true, msg: 'You have successfully added new card', newCard });
+      }
+    });
   })
 });
 

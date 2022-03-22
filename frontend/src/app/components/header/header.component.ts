@@ -2,7 +2,7 @@ import { Component, DoCheck } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { BoardService } from './../../services/board.service';
-import { List } from 'src/app/models/list.model';
+import { List } from 'src/app/shared/models/list.model';
 
 @Component({
   selector: 'app-header',
@@ -28,8 +28,9 @@ export class HeaderComponent implements DoCheck {
     this.auth.logOut()
   }
 
-  addList(text: string) {
-    if (text) {
+  addList(data: any) {
+    if (data) {
+      const text = data[0];
       this.userId = JSON.parse(sessionStorage.getItem('user')!).id;
       const list: List = {
         title: text,

@@ -14,7 +14,7 @@ router.post('/reg', (req, res) => {
         email: req.body.email,
         password: req.body.password
       });
-    
+
       User.addUser(newUser, (err, user) => {
         if (err) {
           res.json({ success: false, msg: 'Something went wrong, try again later..' });

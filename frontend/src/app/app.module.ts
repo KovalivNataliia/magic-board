@@ -22,7 +22,7 @@ import { NotificationComponent } from './components/notification/notification.co
 @NgModule({
   declarations: [
     AppComponent,
-    NotificationComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

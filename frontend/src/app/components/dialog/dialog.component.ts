@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogFormComponent } from './dialog-form/dialog-form.component';
 
@@ -8,21 +8,19 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
   styleUrls: ['./dialog.component.scss']
 })
 
-export class DialogComponent implements OnInit {
+export class DialogComponent {
 
   @Output() emitConfirm: EventEmitter<any> = new EventEmitter();
   @Input() title!: string;
   @Input() text!: string;
+  @Input() showColorPanel!: boolean;
 
   constructor(public dialog: MatDialog) { }
-
-  ngOnInit(): void {
-  }
 
   openAddDialog(): void {
     const dialogRef = this.dialog.open(DialogFormComponent, {
       width: '400px',
-      data: { title: this.title, text: this.text }
+      data: { title: this.title, text: this.text, showColorPanel: this.showColorPanel }
     });
 
     dialogRef.afterClosed().subscribe(result => {

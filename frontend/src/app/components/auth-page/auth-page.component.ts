@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
-import { User } from 'src/app/models/user.model';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-auth-page',
   templateUrl: './auth-page.component.html',
   styleUrls: ['./auth-page.component.scss']
 })
-export class AuthPageComponent implements OnInit {
+export class AuthPageComponent {
 
   hide: boolean = true;
 
@@ -20,14 +20,11 @@ export class AuthPageComponent implements OnInit {
   });
 
   constructor(
-    private _formBuilder: FormBuilder, 
+    private _formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private notification: NotificationService
-    ) { }
-
-  ngOnInit(): void {
-  }
+  ) { }
 
   onSubmit() {
     const userData: User = {

@@ -1,0 +1,6 @@
+<div class="card mb-2" [ngStyle]="{ backgroundColor: card.color }">
+  <div>{{ card.text }}</div>
+  <button mat-icon-button (click)="deleteCard(card._id)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

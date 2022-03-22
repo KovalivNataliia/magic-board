@@ -1,0 +1,5 @@
+<div class="color-panel py-2 shadow-sm">
+  <div *ngFor="let color of colorsData" (click)="setColor(color)">
+    <button [ngStyle]="{ background: color }" class="color-panel-item shadow-sm mr-2"></button>
+  </div>
+</div>
