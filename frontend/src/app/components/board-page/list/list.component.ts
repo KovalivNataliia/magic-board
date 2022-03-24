@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BoardService } from 'src/app/services/board.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { List } from 'src/app/shared/models/list.model';
@@ -58,7 +58,7 @@ export class ListComponent {
     if (data) {
       const text = data[0];
       const color = data[1] || '#FFC0CB';
-      const card: Card = { text, color}
+      const card: Card = { text, color }
 
       this.boardService.addCard(card, listId).subscribe(data => {
         if (!data.success) {
@@ -73,6 +73,25 @@ export class ListComponent {
         };
       })
     }
+  }
+
+  deleteCard(event: any, listId: string) {
+    this.boardService.deleteCard(event.cardId, listId).subscribe(data => {
+      if (!data.success) {
+        this.notification.showMessage(data.msg, data.success);
+      } else {
+        this.boardService.lists.map(list => {
+          if (list._id === listId) {
+            list.cards.map((card, idx, arr) => {
+              if (card._id === event.cardId) {
+                arr.splice(idx, 1);
+              }
+            })
+          }
+        });
+        this.boardService.lists$.next(this.boardService.lists)
+      };
+    })
   }
 
   drop(event: any) {

@@ -75,4 +75,19 @@ router.post('/lists/:id/cards', passport.authenticate('jwt', { session: false })
   })
 });
 
+router.delete('/lists/:listId/cards/:cardId', passport.authenticate('jwt', { session: false }), (req, res) => {
+  const listId = req.params.listId;
+  const cardId = req.params.cardId;
+
+  List.getListById(listId, (err, list) => {
+    Card.deleteCard(cardId, list, (err, list) => {
+      if (err) {
+        res.json({ success: false, msg: 'Something went wrong, try again later..' });
+      } else {
+        res.json({ success: true, msg: 'You have successfully deleted card' });
+      }
+    })
+  })
+});
+
 module.exports = router;

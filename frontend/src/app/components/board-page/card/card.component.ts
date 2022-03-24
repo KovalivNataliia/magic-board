@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from 'src/app/shared/models/card.model';
 
 @Component({
@@ -9,10 +9,11 @@ import { Card } from 'src/app/shared/models/card.model';
 export class CardComponent {
 
   @Input() card!: Card;
+  @Output() emitDeleteCard: EventEmitter<{ cardId: string }> = new EventEmitter();
 
   constructor() { }
 
-  deleteCard(id: string) {
-
+  deleteCard(cardId: string) {
+    this.emitDeleteCard.emit({ cardId });
   }
 }

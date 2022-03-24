@@ -48,4 +48,10 @@ export class BoardService {
     headers.append('Content-Type', 'application/json');
     return this.http.post(this.url + id + '/cards', card, { headers: headers }).pipe(map((response: any) => response));
   }
+
+  deleteCard(cardId: string, listId: string) {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(this.url + listId + '/cards/' + cardId, { headers: headers }).pipe(map((response: any) => response));
+  }
 }

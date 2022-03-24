@@ -15,7 +15,7 @@
   </div>
   <div cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="drop($event)" class="drop-list">
     <div cdkDrag *ngFor="let card of list.cards" class="card drop-box">
-      <app-card [card]="card"></app-card>
+      <app-card [card]="card" (emitDeleteCard)="deleteCard($event, list._id)"></app-card>
     </div>
   </div>
 </div>
