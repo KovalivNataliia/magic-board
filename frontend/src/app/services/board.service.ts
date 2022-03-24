@@ -10,7 +10,7 @@ import { Card } from 'src/app/shared/models/card.model';
 
 export class BoardService {
 
-  url: string = 'http://localhost:3000/board/lists/';
+  url: string = 'board/lists/';
   lists!: List[];
   lists$: any;
 

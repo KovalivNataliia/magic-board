@@ -14,7 +14,7 @@ export class RegistrationService {
   regUser(userData: User) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    const url = 'http://localhost:3000/account/reg';
+    const url = 'account/reg';
     return this.http.post(url, userData, { headers: headers }).pipe(map((response: any) => response));
   }
 }

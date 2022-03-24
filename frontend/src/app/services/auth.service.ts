@@ -15,7 +15,7 @@ export class AuthService {
   authUser(userData: User) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    const url = 'http://localhost:3000/account/auth';
+    const url = 'account/auth';
     return this.http.post(url, userData, { headers: headers }).pipe(map((response: any) => response));
   }
 

@@ -12,8 +12,8 @@ const session = require('express-session');
 
 const app = express();
 
-const PORT = 3000;
-// const PORT = process.env.PORT || 8080;
+// const PORT = 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(session({
   resave: false,
@@ -37,9 +37,9 @@ app.get('/', (req, res) => {
 app.use('/account', accountRoutes);
 app.use('/board', boardRoutes);
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public/index.html'))
-// })
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+})
 
 mongoose.connect(config.db, {
   useUnifiedTopology: true,
