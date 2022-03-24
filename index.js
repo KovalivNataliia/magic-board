@@ -13,7 +13,7 @@ const session = require('express-session');
 const app = express();
 
 // const PORT = 3000;
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.MONGODB_URI || 8080;
 
 app.use(session({
   resave: false,
