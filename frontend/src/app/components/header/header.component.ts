@@ -34,7 +34,8 @@ export class HeaderComponent implements DoCheck {
       this.userId = JSON.parse(sessionStorage.getItem('user')!).id;
       const list: List = {
         title: text,
-        userId: this.userId
+        userId: this.userId,
+        cards: []
       }
 
       this.boardService.addList(list).subscribe(data => {

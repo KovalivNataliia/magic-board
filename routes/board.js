@@ -33,13 +33,13 @@ router.post('/lists', passport.authenticate('jwt', { session: false }), (req, re
 
 router.patch('/lists/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   const id = req.params.id;
-  const text = req.body.text;
+
   List.getListById(id, (err, list) => {
-    List.changeList(list, text, (err, list) => {
+    List.changeList(list, req.body, (err, list) => {
       if (err) {
         res.json({ success: false, msg: 'Something went wrong, try again later..' });
       } else {
-        res.json({ success: true, msg: 'You have successfully changed title' });
+        res.json({ success: true, msg: 'You have successfully changed list' });
       }
     })
   })

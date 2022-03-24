@@ -4,5 +4,5 @@ export interface List {
   _id?: string | any,
   title: string,
   userId: string,
-  cards?: Card[]
+  cards: Card[]
 }

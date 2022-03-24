@@ -1,21 +1,25 @@
 <div class="shadow-sm list">
-  <h2 class="m-0">{{ list.title }}</h2>
-  <div class="btn-container">
-    <app-dialog [title]="'Edit ' + list.title + ' list'" [text]="list.title"
-      (emitConfirm)="changeListTitle($event, list._id)">
-      <button mat-icon-button>
-        <mat-icon>create</mat-icon>
+  <div class="list-header">
+    <h2 class="m-0">{{ list.title }}</h2>
+    <div class="btn-container">
+      <app-dialog [title]="'Edit ' + list.title + ' list'" [text]="list.title"
+        (emitConfirm)="changeListTitle($event, list._id)">
+        <button mat-icon-button>
+          <mat-icon>create</mat-icon>
+        </button>
+      </app-dialog>
+      <button mat-icon-button (click)="deleteList(list._id)">
+        <mat-icon>delete</mat-icon>
       </button>
-    </app-dialog>
-    <button mat-icon-button (click)="deleteList(list._id)">
-      <mat-icon>delete</mat-icon>
-    </button>
+    </div>
+  </div>
+  <div cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="drop($event)" class="drop-list">
+    <div cdkDrag *ngFor="let card of list.cards" class="card drop-box">
+      <app-card [card]="card"></app-card>
+    </div>
   </div>
 </div>
 <app-dialog [title]="'Add new card in ' + list.title + ' list'" [showColorPanel]="true"
   (emitConfirm)="addCard($event, list._id)">
   <button mat-raised-button class="add-btn w-100 mb-1">+</button>
 </app-dialog>
-<div cdkDrag *ngFor="let card of list.cards">
-  <app-card [card]="card"></app-card>
-</div>

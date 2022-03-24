@@ -31,10 +31,10 @@ export class BoardService {
     return this.http.post(this.url, list, { headers: headers }).pipe(map((response: any) => response));
   }
 
-  changeList(text: string, id: string) {
+  changeList(data: any) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.patch(this.url + id, { text }, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.patch(this.url + data._id, data, { headers: headers }).pipe(map((response: any) => response));
   }
 
   deleteList(id: string) {

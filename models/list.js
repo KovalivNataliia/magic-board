@@ -21,9 +21,11 @@ module.exports.getListById = (id, callback) => List.findById(id, callback);
 
 module.exports.addList = (newList, callback) => newList.save(callback);
 
-module.exports.changeList = (list, text, callback) => {
-  list.title = text;
-  list.save(callback);
+module.exports.changeList = (list, data, callback) => {
+  const text = data.text;
+  const cards = data.cards;
+  if (text) list.updateOne({ title: text }, callback);
+  if (cards) list.updateOne({ cards }, callback);
 }
 
 module.exports.deleteList = (id, callback) => List.findByIdAndRemove(id, callback);
