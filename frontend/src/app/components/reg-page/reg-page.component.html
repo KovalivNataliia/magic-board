@@ -20,7 +20,7 @@
           <mat-label>Password</mat-label>
           <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'"
             required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
@@ -35,19 +35,19 @@
       </form>
     </mat-step>
     <mat-step [stepControl]="thirdFormGroup" label="Repeat your password">
-      <form [formGroup]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup" (ngSubmit)="registerUser()">
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
           <input matInput formControlName="repeatPassword" placeholder="Password" [type]="hide ? 'password' : 'text'"
             required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
         <div>
           <button mat-stroked-button color="warn" matStepperPrevious>Back</button>
-          <button mat-stroked-button color="primary" (click)="registerUser()">Register</button>
+          <button mat-stroked-button color="primary">Register</button>
         </div>
       </form>
     </mat-step>
