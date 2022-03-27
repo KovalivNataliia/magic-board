@@ -25,7 +25,7 @@ export class HeaderComponent implements DoCheck {
   }
 
   logOut() {
-    this.auth.logOut()
+    this.auth.logOut();
   }
 
   addList(data: any) {
@@ -43,7 +43,7 @@ export class HeaderComponent implements DoCheck {
           this.notification.showMessage(data.msg, data.success);
         } else {
           this.boardService.lists.push(data.list);
-          this.boardService.lists$.next(this.boardService.lists)
+          this.boardService.lists$.next(this.boardService.lists);
         };
       })
     }

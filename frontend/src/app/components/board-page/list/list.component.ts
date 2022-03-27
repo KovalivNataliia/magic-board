@@ -33,7 +33,7 @@ export class ListComponent {
               list.title = text;
             }
           });
-          this.boardService.lists$.next(this.boardService.lists)
+          this.boardService.lists$.next(this.boardService.lists);
         };
       })
     }

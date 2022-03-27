@@ -33,11 +33,11 @@ export class AuthPageComponent {
     }
     this.authService.authUser(userData).subscribe(data => {
       if (!data.success) {
-        this.notification.showMessage(data.msg, data.success)
+        this.notification.showMessage(data.msg, data.success);
       } else {
-        this.notification.showMessage(data.msg, data.success)
+        this.notification.showMessage(data.msg, data.success);
         this.router.navigate(['/board']);
-        this.authService.storeUser(data.token, data.user)
+        this.authService.storeUser(data.token, data.user);
       }
     });
   }

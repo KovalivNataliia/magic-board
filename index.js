@@ -9,10 +9,8 @@ const accountRoutes = require('./routes/account');
 const boardRoutes = require('./routes/board');
 const session = require('express-session');
 
-
 const app = express();
 
-// const PORT = 3000;
 const PORT = process.env.PORT || 8080;
 
 app.use(session({
@@ -29,10 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors());
 app.use(bodyParser.json());
-
-app.get('/', (req, res) => {
-  res.send('Main page');
-})
 
 app.use('/account', accountRoutes);
 app.use('/board', boardRoutes);

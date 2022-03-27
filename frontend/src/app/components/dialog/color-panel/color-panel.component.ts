@@ -9,10 +9,10 @@ import { Colors } from '@shared/enum-data/colors';
 export class ColorPanelComponent {
 
   @Output() emitSetColor: EventEmitter<{ color: string }> = new EventEmitter();
-  colorsData = Object.values(Colors)
+  colorsData = Object.values(Colors);
 
   setColor(color: string) {
-    this.emitSetColor.emit({ color })
+    this.emitSetColor.emit({ color });
   }
 
 }

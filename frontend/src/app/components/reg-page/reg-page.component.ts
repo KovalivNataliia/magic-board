@@ -52,9 +52,9 @@ export class RegPageComponent {
         }
         this.regService.regUser(userData).subscribe(data => {
           if (!data.success) {
-            this.notification.showMessage(data.msg, data.success)
+            this.notification.showMessage(data.msg, data.success);
           } else {
-            this.notification.showMessage(data.msg, data.success)
+            this.notification.showMessage(data.msg, data.success);
             this.router.navigate(['/auth']);
           }
         });
