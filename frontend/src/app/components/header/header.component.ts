@@ -48,4 +48,5 @@ export class HeaderComponent implements DoCheck {
       })
     }
   }
+  
 }

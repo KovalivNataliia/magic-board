@@ -1,4 +1,4 @@
-export enum colors {
+export enum Colors {
   SOFT_PEACH = '#FED6BC',
   LIGHT_GREEN = '#C3FBD8',
   PASTEL_SKY = '#DEF7FE',

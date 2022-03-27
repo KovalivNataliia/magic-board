@@ -19,5 +19,6 @@ export class NotificationComponent implements DoCheck {
     this.messageText = this.notification.messageText;
     this.color = this.notification.color;
   }
+  
 }
 

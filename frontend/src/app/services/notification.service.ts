@@ -26,5 +26,5 @@ export class NotificationService {
   private hideMessage() {
     this.hideMessageTimeout = setTimeout(() => this.visible = false, 3000);
   }
-
+  
 }

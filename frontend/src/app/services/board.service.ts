@@ -13,8 +13,11 @@ export class BoardService {
   url: string = 'board/lists/';
   lists!: List[];
   lists$: any;
+  headers = new HttpHeaders();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.headers.append('Content-Type', 'application/json');
+  }
 
   getLists$() {
     return this.lists$;
@@ -26,32 +29,23 @@ export class BoardService {
   }
 
   addList(list: List) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(this.url, list, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.post(this.url, list, { headers: this.headers }).pipe(map((response: any) => response));
   }
 
   changeList(data: any) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.patch(this.url + data._id, data, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.patch(this.url + data._id, data, { headers: this.headers }).pipe(map((response: any) => response));
   }
 
   deleteList(id: string) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.delete(this.url + id, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.delete(this.url + id, { headers: this.headers }).pipe(map((response: any) => response));
   }
 
   addCard(card: Card, id: string) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(this.url + id + '/cards', card, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.post(this.url + id + '/cards', card, { headers: this.headers }).pipe(map((response: any) => response));
   }
 
   deleteCard(cardId: string, listId: string) {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    return this.http.delete(this.url + listId + '/cards/' + cardId, { headers: headers }).pipe(map((response: any) => response));
+    return this.http.delete(this.url + listId + '/cards/' + cardId, { headers: this.headers }).pipe(map((response: any) => response));
   }
+
 }

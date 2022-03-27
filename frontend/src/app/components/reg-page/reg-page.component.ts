@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { RegistrationService } from 'src/app/services/registration.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/shared/models/user.model';
@@ -14,7 +14,6 @@ import { User } from 'src/app/shared/models/user.model';
   templateUrl: './reg-page.component.html',
   styleUrls: ['./reg-page.component.scss']
 })
-
 export class RegPageComponent {
 
   firstFormGroup = this._formBuilder.group({
@@ -66,5 +65,5 @@ export class RegPageComponent {
       this.notification.showMessage('Check your email', false);
     }
   }
-
+  
 }

@@ -6,7 +6,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './dialog-form.component.html',
   styleUrls: ['./dialog-form.component.scss']
 })
-
 export class DialogFormComponent {
 
   showColorPanel = false;

@@ -11,9 +11,8 @@ export class CardComponent {
   @Input() card!: Card;
   @Output() emitDeleteCard: EventEmitter<{ cardId: string }> = new EventEmitter();
 
-  constructor() { }
-
   deleteCard(cardId: string) {
     this.emitDeleteCard.emit({ cardId });
   }
+  
 }

@@ -17,4 +17,5 @@ export class RegistrationService {
     const url = 'account/reg';
     return this.http.post(url, userData, { headers: headers }).pipe(map((response: any) => response));
   }
+  
 }

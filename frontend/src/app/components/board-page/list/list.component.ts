@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { BoardService } from 'src/app/services/board.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { List } from 'src/app/shared/models/list.model';
 import { Card } from 'src/app/shared/models/card.model';
-import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-list',
@@ -105,11 +105,14 @@ export class ListComponent {
         event.currentIndex,
       );
       this.boardService.changeList(event.container.data).subscribe(data => {
-        if (!data.success) this.notification.showMessage(data.msg, data.success);
+        if (!data.success) {
+          this.notification.showMessage(data.msg, data.success);
+        } else {
+          this.boardService.changeList(event.previousContainer.data).subscribe(data => {
+            if (!data.success) this.notification.showMessage(data.msg, data.success);
+          });
+        }
       })
-      this.boardService.changeList(event.previousContainer.data).subscribe(data => {
-        if (!data.success) this.notification.showMessage(data.msg, data.success);
-      });
     }
   }
 

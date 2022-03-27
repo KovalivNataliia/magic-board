@@ -7,7 +7,6 @@ import { DialogFormComponent } from './dialog-form/dialog-form.component';
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-
 export class DialogComponent {
 
   @Output() emitConfirm: EventEmitter<any> = new EventEmitter();
@@ -27,5 +26,5 @@ export class DialogComponent {
       this.emitConfirm.emit(result);
     });
   }
-
+  
 }

@@ -4,7 +4,7 @@
       <form [formGroup]="firstFormGroup">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" formControlName="email" required>
+          <input matInput formControlName="email" required>
           <mat-error>
             Check entered email
           </mat-error>
@@ -18,8 +18,7 @@
       <form [formGroup]="secondFormGroup">
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="password" placeholder="Password" [type]="hide ? 'password' : 'text'"
-            required>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
           <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -38,8 +37,7 @@
       <form [formGroup]="thirdFormGroup" (ngSubmit)="registerUser()">
         <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput formControlName="repeatPassword" placeholder="Password" [type]="hide ? 'password' : 'text'"
-            required>
+          <input matInput formControlName="repeatPassword" [type]="hide ? 'password' : 'text'" required>
           <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

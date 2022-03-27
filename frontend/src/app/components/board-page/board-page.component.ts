@@ -21,4 +21,5 @@ export class BoardPageComponent implements OnInit {
       }
     });
   }
+  
 }
