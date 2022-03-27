@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Colors } from 'src/app/shared/enum-data/colors';
+import { Colors } from '@shared/enum-data/colors';
 
 @Component({
   selector: 'app-color-panel',

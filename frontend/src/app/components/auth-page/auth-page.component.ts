@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import { NotificationService } from 'src/app/services/notification.service';
-import { User } from 'src/app/shared/models/user.model';
+import { AuthService } from '@services/auth.service';
+import { NotificationService } from '@services/notification.service';
+import { User } from '@shared/models/user.model';
 
 @Component({
   selector: 'app-auth-page',

@@ -5,9 +5,9 @@ import { StepperOrientation } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RegistrationService } from 'src/app/services/registration.service';
-import { NotificationService } from 'src/app/services/notification.service';
-import { User } from 'src/app/shared/models/user.model';
+import { RegistrationService } from '@services/registration.service';
+import { NotificationService } from '@services/notification.service';
+import { User } from '@shared/models/user.model';
 
 @Component({
   selector: 'app-reg-page',

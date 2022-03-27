@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { BoardService } from 'src/app/services/board.service';
+import { BoardService } from '@services/board.service';
 
 @Component({
   selector: 'app-board-page',

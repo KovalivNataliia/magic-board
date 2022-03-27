@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { User } from 'src/app/shared/models/user.model';
+import { User } from '@shared/models/user.model';
 
 @Injectable({
   providedIn: 'root'

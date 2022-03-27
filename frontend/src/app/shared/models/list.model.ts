@@ -1,4 +1,4 @@
-import { Card } from "./card.model";
+import { Card } from "@shared/models/card.model";
 
 export interface List {
   _id?: string | any,

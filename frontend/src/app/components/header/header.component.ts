@@ -1,8 +1,8 @@
 import { Component, DoCheck } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { NotificationService } from 'src/app/services/notification.service';
-import { BoardService } from './../../services/board.service';
-import { List } from 'src/app/shared/models/list.model';
+import { AuthService } from '@services/auth.service';
+import { NotificationService } from '@services/notification.service';
+import { BoardService } from '@services/board.service';
+import { List } from '@shared/models/list.model';
 
 @Component({
   selector: 'app-header',

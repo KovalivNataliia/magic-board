@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { BoardService } from 'src/app/services/board.service';
-import { NotificationService } from 'src/app/services/notification.service';
-import { List } from 'src/app/shared/models/list.model';
-import { Card } from 'src/app/shared/models/card.model';
+import { BoardService } from '@services/board.service';
+import { NotificationService } from '@services/notification.service';
+import { List } from '@shared/models/list.model';
+import { Card } from '@shared/models/card.model';
 
 @Component({
   selector: 'app-list',

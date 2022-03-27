@@ -6,7 +6,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { RegPageComponent } from '../components/reg-page/reg-page.component';
+import { RegPageComponent } from '@components/reg-page/reg-page.component';
 
 @NgModule({
   declarations: [RegPageComponent],

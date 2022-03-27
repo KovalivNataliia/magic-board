@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { List } from 'src/app/shared/models/list.model';
-import { Card } from 'src/app/shared/models/card.model';
+import { List } from '@shared/models/list.model';
+import { Card } from '@shared/models/card.model';
 
 @Injectable({
   providedIn: 'root'

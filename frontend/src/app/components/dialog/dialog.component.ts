@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogFormComponent } from './dialog-form/dialog-form.component';
+import { DialogFormComponent } from '@components/dialog/dialog-form/dialog-form.component';
 
 @Component({
   selector: 'app-dialog',
